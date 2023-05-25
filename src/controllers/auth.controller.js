@@ -11,15 +11,15 @@ import bcryptjs from 'bcryptjs'
 // * Creo la constante (función )asíncrona, va a tener una solicitud y una respuesta, y va a devolver un usuario y contraseña
 
 const login = async(req = request, res = response) => {
-    const { username, password} = req.body          // * Obtiene la data del body
+    const { name, pass} = req.body          // * Obtiene la data del body
 
-    console.log(`username: ${username} password: ${password}`);
+    console.log(`name: ${name} pass: ${pass}`);
 
     // esperamos la conexión a la base de datos, una vez que se conecta verifica si existe el usuario
 
     try {
         const connection = await connect
-        const result = await connection.query('SELECT * FROM users WHERE username = ?', username)
+        const result = await connection.query('SELECT * FROM users WHERE name = ?',name)
         console.log(result);
 
         if (result.length !=0) {    // * Si el usuario existe, entonces: 

@@ -1,13 +1,14 @@
 // * Archivo de configuración de la aplicación
-import express from 'express';
-import morgan from 'morgan';
-import session from 'express-session';
+import express from 'express'
+import morgan from 'morgan'
+import session from 'express-session'
 
 var cors = require('cors')
 
 // * Rutas
 
 import authRoutes from './routes/auth.routes.js'
+import usersRoutes from './routes/users.routes.js'
 
 // * Express
 
@@ -21,23 +22,24 @@ app.use(cors())
 
 app.set('port', 3000)
 app.use(express.urlencoded({extended: false}))
-app.use(express.json)
+app.use(express.json())
 
 // * Middlewares
 
-app.use(morgan)
+app.use(morgan('dev'))
 
 // * Express session
 
 app.use(session({
-  secret: 'secret',
-  resave: true, // * Secret seet for jwToken
+  secret: 'secret', // * Secret seed for jwToken
+  resave: true, 
   saveUninitialized: true
 }))
 
 // * Dirección de rutas
 
 app.use(
+  usersRoutes,
   authRoutes
 )
 

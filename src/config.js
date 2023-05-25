@@ -1,14 +1,12 @@
-import { config } from 'dotenv'
+import { config } from 'dotenv';
 
 config()
 
 // * Conexión al servidor
-
 export default {
-    host: process.env.host,
-    port: process.env.port,
-    database: process.env.database,
-    user: 'root',
-    password: process.env.password
-    
-}
+    host:process.env.HOST,
+    port:process.env.PORT,
+    database:process.env.DATABASE,
+    user:'root',
+    password:process.env.PASSWORD,    
+};

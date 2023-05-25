@@ -1,5 +1,5 @@
 import mysql from 'promise-mysql'
-import config from '../config.js'
+import config from './../config.js'
 
 // * Conexión a la base de datos
 

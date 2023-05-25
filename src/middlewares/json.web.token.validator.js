@@ -1,10 +1,11 @@
-import { request, res, response } from "express";
+import { request, response } from 'express'
 
 const jwt = require('jsonwebtoken')
 
+// * Agrego JWT al header como validación
 
 const validateJWT = (req = request, res = response, next) => {
-    const token = req.headers.authorization
+    const token = req.headers.authorization     // * Token from header
     console.log(token);
     if(!token) {
         console.log('Access denied');
@@ -15,6 +16,8 @@ const validateJWT = (req = request, res = response, next) => {
     }
 
     try {
+
+        // * Verifico el token obtenido con la secretKey
 
         const {id} = jwt.verify(token,process.env.JWT_SECRET)
         req.id = id
